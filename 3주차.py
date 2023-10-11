@@ -30,3 +30,17 @@ def solution(k, dungeons):
                 count += 1
         answer = max(answer, count)
     return answer
+
+# [스택/큐 - 주식가격]
+# 스택을 사용하지 않은 풀이
+# for문을 사용하여 2중반복문으로 풀음
+
+
+def solution(prices):
+    answer = [0] * len(prices)
+    for i in range(len(prices)):
+        for j in range(i+1, len(prices)):
+            answer[i] += 1
+            if prices[i] > prices[j]:
+                break
+    return answer
