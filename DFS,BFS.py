@@ -44,3 +44,29 @@ def solution(numbers, target):
         if leaf == target:
             count += 1
     return count
+
+#[네트워크]
+from collections import deque
+    
+def solution(n, computers):
+    answer = 0
+    queue = deque()
+    
+             
+    def bfs(i):
+        queue.append(i)
+        while queue:
+            i = queue.popleft()
+            visited[i] = 1
+            for a in range(n):
+                if computers[i][a] and not visited[a]:
+                    queue.append(a)
+                    
+    visited = [0 for i in range(len(computers))]
+
+    for i in range(n):
+        if not visited[i]:
+            bfs(i)
+            answer += 1
+        
+    return answer
